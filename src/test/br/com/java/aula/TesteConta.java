@@ -1,0 +1,37 @@
+package test.br.com.java.aula;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import br.com.java.aula.Conta;
+
+public class TesteConta {
+
+	private Conta conta;
+	
+	@Before
+	public void before() {
+		conta = new Conta("Arthur", "2-2", "123-4");
+	}
+
+	@Test
+	public void DadosConta() {
+		assertEquals("Arthur", conta.GetTitular());
+		assertEquals(0, conta.GetSaldo(), 0);
+	}
+	
+	@Test
+	public void CreditoConta() {
+		conta.Credito(100);
+		assertEquals(100, conta.GetSaldo(), 0);
+	}
+
+	@Test
+	public void DebitoConta() {
+		conta.Credito(100);
+		conta.Debito(60);
+		assertEquals(40, conta.GetSaldo(), 0);
+	}		
+}
